@@ -25,7 +25,7 @@ public class Product {
     @Column(name = "cost")
     private int cost;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", nullable = false, updatable = false)
     @CreationTimestamp
     private LocalDateTime createdAt;
 
