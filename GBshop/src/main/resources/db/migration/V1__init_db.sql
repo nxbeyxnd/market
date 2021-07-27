@@ -46,3 +46,11 @@ insert into products (title, cost) VALUES
 ('cookie30', 70470),
 ('cookie31', 70748740),
 ('cookie32', 704480);
+
+create table order_products (
+    id bigserial primary key,
+    product_id integer REFERENCES products (id) ON DELETE CASCADE,
+    title VARCHAR(255),
+    count int,
+    cost_per_item int,
+    cost int);

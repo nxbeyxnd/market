@@ -26,31 +26,32 @@ public class ProductsController {
             page = 1;
         }
         return productService.findAll(ProductSpecifications.build(params), page, size);
+
     }
 
     @GetMapping("/{id}")
-    public ProductDto getById(@PathVariable Long id){
-        return productService.findById(id).orElseThrow(()-> new ResourceNotFoundException("Product with id: " + id + " not found"));
+    public ProductDto getById(@PathVariable Long id) {
+        return productService.findbyIdDto(id).orElseThrow(() -> new ResourceNotFoundException("Product with id: " + id + " not found"));
     }
 
     @PostMapping
-    public Product save(@RequestBody Product product){
+    public Product save(@RequestBody Product product) {
         product.setId(null);
         return productService.saveOrUpdate(product);
     }
 
     @PutMapping
-    public Product update(@RequestBody Product product){
+    public Product update(@RequestBody Product product) {
         return productService.saveOrUpdate(product);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id){
+    public void delete(@PathVariable Long id) {
         productService.deleteProductById(id);
     }
 
     @DeleteMapping
-    public void deleteAll(){
+    public void deleteAll() {
         productService.deleteAll();
     }
 }

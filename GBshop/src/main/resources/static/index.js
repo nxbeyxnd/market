@@ -1,5 +1,5 @@
 angular.module('app', []).controller('indexController', function ($scope, $http) {
-    const contextPath = 'http://localhost:8190/market/api/v1';
+    const contextPath = 'http://localhost:8190/api/v1';
 
     $scope.fillTable = function (pageIndex = 1, size = 2) {
         $http({
@@ -29,13 +29,34 @@ angular.module('app', []).controller('indexController', function ($scope, $http)
         });
     };
 
-    $scope.generatePagesIndexes = function(startPage, endPage) {
+    $scope.fillCart = function () {
+        $http.get(contextPath + '/cart')
+            .then(function (response) {
+                $scope.CartContainer = response.data;
+            });
+    }
+
+    $scope.addToCart = function (productId) {
+        $http.post(contextPath + '/cart', {'id': productId})
+            .then(function (response) {
+                $scope.fillCart();
+            });
+    }
+
+    $scope.deleteAllCart = function () {
+        $http.delete(contextPath + '/cart/')
+            .then(function (response) {
+                $scope.fillCart();
+            });
+    }
+
+    $scope.generatePagesIndexes = function (startPage, endPage) {
         let arr = [];
         for (let i = startPage; i < endPage + 1; i++) {
             arr.push(i);
         }
         return arr;
-    }
+    };
 
     $scope.submitCreateNewProduct = function () {
         $http.post(contextPath + '/products', $scope.newProduct)
@@ -48,9 +69,11 @@ angular.module('app', []).controller('indexController', function ($scope, $http)
     $scope.deleteProductById = function (productId) {
         $http.delete(contextPath + '/products/' + productId)
             .then(function (response) {
+                $scope.fillCart();
                 $scope.fillTable();
             });
-    }
+    };
 
     $scope.fillTable();
+    $scope.fillCart();
 });

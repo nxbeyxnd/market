@@ -17,25 +17,25 @@ public class ProductService {
     @Autowired
     ProductsRepository productsRepository;
 
-    public Optional<ProductDto> findById(Long id){
+    public Optional<ProductDto> findbyIdDto(Long id) {
         return productsRepository.findById(id).map(ProductDto::new);
     }
 
-    public Product saveOrUpdate(Product product){
+    public Product saveOrUpdate(Product product) {
         return productsRepository.save(product);
     }
 
     public Page<ProductDto> findAll(Specification<Product> spec, int page, int pageSize) {
-        if(page < 0)
+        if (page < 0)
             throw new RuntimeException();
         return productsRepository.findAll(spec, PageRequest.of(page - 1, pageSize)).map(ProductDto::new);
     }
 
-    public void deleteProductById(Long id){
+    public void deleteProductById(Long id) {
         productsRepository.deleteById(id);
     }
 
-    public void deleteAll(){
+    public void deleteAll() {
         productsRepository.deleteAll();
     }
 }
