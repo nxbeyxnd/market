@@ -10,7 +10,8 @@ create table products
 create table orders
 (
     id            bigserial primary key,
-    product_id    integer REFERENCES products (id) ON DELETE CASCADE,
+    user_id       int references users(id),
+    product_id    int references products (id) ON DELETE CASCADE,
     title         VARCHAR(255),
     count         int,
     cost_per_item int,
@@ -39,6 +40,54 @@ create table users_roles
     foreign key (user_id) references users (id),
     foreign key (role_id) references roles (id)
 );
+
+create table stock(
+    product_id int references products(id),
+    stock_count int
+);
+
+CREATE TYPE delivery_status AS ENUM ('DELIVERED', 'CANCELED', 'IN_PROCESS', 'STARTING');
+create table delivery(
+    delivery_status_id serial primary key,
+    status delivery_status,
+    delivered_at timestamp default current_timestamp
+);
+
+create table delivery_orders(
+    order_id integer references orders(id),
+    delivery_status integer references delivery(delivery_status_id),
+    primary key (order_id, delivery_status),
+    foreign key (order_id) references orders (id),
+    foreign key (delivery_status) references delivery (delivery_status_id)
+);
+
+CREATE TYPE payment_status AS ENUM ('SUCCESS', 'ERROR');
+create table payment(
+    payment_status_id serial primary key,
+    status payment_status,
+    payed_at timestamp default current_timestamp
+);
+
+CREATE table payment_orders(
+    order_id int,
+    payment_status int,
+    primary key (order_id, payment_status),
+    foreign key (order_id) references orders (id),
+    foreign key (payment_status) references payment (payment_status_id)
+);
+
+create table users_orders(
+    order_id integer,
+    user_id integer,
+    primary key (user_id, order_id),
+    foreign key (user_id) references users (id),
+    foreign key (order_id) references orders (id)
+);
+
+
+
+
+
 
 insert into products (title, cost)
 VALUES ('potatoe', 100),
