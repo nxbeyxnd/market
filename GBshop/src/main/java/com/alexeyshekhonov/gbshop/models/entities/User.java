@@ -23,6 +23,12 @@ public class User {
     @Column(name = "email")
     private String email;
 
+//    @OneToMany
+//    @JoinTable(name = "users_orders",
+//    joinColumns = @JoinColumn(name = "user_id"),
+//    inverseJoinColumns = @JoinColumn(name = "order_id"))
+//    private Collection<Order> orders;
+
     @ManyToMany
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>a0127dac-67bb-425c-88a5-9e3e759758f9.SCHEMA:postgres.test</OriginalElement>
+  <nodes>
+    <node x="385.8121460928652" y="713.4020385050964">a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.users_orders</node>
+    <node x="669.3100226500567" y="646.0656851642128">a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.users</node>
+    <node x="-124.53567383918465" y="145.19818799547">a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.stock</node>
+    <node x="254.36240090600222" y="496.04756511891276">a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.orders</node>
+    <node x="-124.53567383918465" y="496.04756511891276">a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.products</node>
+    <node x="-124.53567383918465" y="321.1228765571914">a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.stock_products</node>
+    <node x="586.8097395243489" y="25.873725934314848">a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.payment</node>
+    <node x="248.86240090600222" y="286.7429218573046">a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.payment_orders</node>
+    <node x="937.1103445192821" y="646.0656851642128">a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.users_roles</node>
+    <node x="847.1850897061452" y="347.71970554926384">a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.delivery_orders</node>
+    <node x="1175.2831257078144" y="637.438844847112">a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.roles</node>
+    <node x="1156.7961494903736" y="336.21970554926384">a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.delivery</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.stock_products" target="a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.products" relationship="REFERENCES">
+      <point x="39.75" y="-38.5" />
+      <point x="-5.285673839184653" y="368.78878822197055" />
+      <point x="-35.03567383918465" y="368.78878822197055" />
+      <point x="0.0" y="72.0" />
+    </edge>
+    <edge source="a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.payment_orders" target="a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.orders" relationship="REFERENCES">
+      <point x="-47.0" y="-38.5" />
+      <point x="295.8624009060022" y="354.78369195922994" />
+      <point x="342.8624009060022" y="354.78369195922994" />
+      <point x="0.0" y="83.0" />
+    </edge>
+    <edge source="a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.orders" target="a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.products" relationship="REFERENCES">
+      <point x="0.0" y="-83.0" />
+      <point x="342.8624009060022" y="544.1891279728198" />
+      <point x="-35.03567383918465" y="544.1891279728198" />
+      <point x="0.0" y="72.0" />
+    </edge>
+    <edge source="a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.payment_orders" target="a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.payment" relationship="REFERENCES">
+      <point x="47.0" y="-38.5" />
+      <point x="389.8624009060022" y="75.87372593431485" />
+      <point x="691.3097395243489" y="75.87372593431485" />
+      <point x="0.0" y="50.0" />
+    </edge>
+    <edge source="a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.delivery_orders" target="a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.orders" relationship="REFERENCES">
+      <point x="45.75" y="-38.5" />
+      <point x="984.4350897061452" y="541.7010192525481" />
+      <point x="342.8624009060022" y="541.7010192525481" />
+      <point x="0.0" y="83.0" />
+    </edge>
+    <edge source="a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.users_roles" target="a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.users" relationship="REFERENCES">
+      <point x="-32.75" y="-38.5" />
+      <point x="969.8603445192821" y="684.5656851642128" />
+      <point x="759.8100226500567" y="684.5656851642128" />
+      <point x="0.0" y="61.0" />
+    </edge>
+    <edge source="a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.users_orders" target="a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.users" relationship="REFERENCES">
+      <point x="34.75" y="-38.5" />
+      <point x="490.0621460928652" y="734.2899207248017" />
+      <point x="759.8100226500567" y="734.2899207248017" />
+      <point x="0.0" y="61.0" />
+    </edge>
+    <edge source="a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.users_roles" target="a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.roles" relationship="REFERENCES">
+      <point x="32.75" y="-38.5" />
+      <point x="1035.360344519282" y="684.5656851642128" />
+      <point x="1248.7831257078144" y="684.5656851642128" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.delivery_orders" target="a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.delivery" relationship="REFERENCES">
+      <point x="-45.75" y="-38.5" />
+      <point x="892.9350897061452" y="376.45526613816537" />
+      <point x="1258.2961494903736" y="376.45526613816537" />
+      <point x="0.0" y="50.0" />
+    </edge>
+    <edge source="a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.users_orders" target="a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.orders" relationship="REFERENCES">
+      <point x="-34.75" y="-38.5" />
+      <point x="420.5621460928652" y="654.3799546998868" />
+      <point x="403.3782559456398" y="654.3799546998868" />
+      <point x="403.3782559456398" y="552.5368063420159" />
+      <point x="342.8624009060022" y="552.5368063420159" />
+      <point x="0.0" y="83.0" />
+    </edge>
+    <edge source="a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.stock_products" target="a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.stock" relationship="REFERENCES">
+      <point x="-39.75" y="-38.5" />
+      <point x="-84.78567383918465" y="333.22338618346555" />
+      <point x="-43.03567383918465" y="333.22338618346555" />
+      <point x="0.0" y="39.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.7382943143812709" showDependencies="false" x="757.7768969422424" y="490.54473386183463" />
+  <SelectedNodes>
+    <node>a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.users_orders</node>
+    <node>a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.users</node>
+    <node>a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.stock</node>
+    <node>a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.orders</node>
+    <node>a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.products</node>
+    <node>a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.stock_products</node>
+    <node>a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.payment</node>
+    <node>a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.payment_orders</node>
+    <node>a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.users_roles</node>
+    <node>a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.delivery_orders</node>
+    <node>a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.roles</node>
+    <node>a0127dac-67bb-425c-88a5-9e3e759758f9.TABLE:postgres.test.delivery</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+

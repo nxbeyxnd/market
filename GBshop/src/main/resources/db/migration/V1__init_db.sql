@@ -7,10 +7,17 @@ create table products
     updated_at timestamp default current_timestamp
 );
 
+create table users
+(
+    id       bigserial primary key,
+    login    varchar(20) unique,
+    password varchar(100),
+    email    varchar(255) unique
+);
+
 create table orders
 (
     id            bigserial primary key,
-    user_id       int references users(id),
     product_id    int references products (id) ON DELETE CASCADE,
     title         VARCHAR(255),
     count         int,
@@ -18,12 +25,13 @@ create table orders
     cost          int
 );
 
-create table users
+create table users_orders
 (
-    id       bigserial primary key,
-    login    varchar(20) unique,
-    password varchar(100),
-    email    varchar(255) unique
+    user_id  int,
+    order_id int,
+    primary key (user_id, order_id),
+    foreign key (user_id) references users (id),
+    foreign key (order_id) references orders (id)
 );
 
 create table roles
@@ -41,50 +49,51 @@ create table users_roles
     foreign key (role_id) references roles (id)
 );
 
-create table stock(
-    product_id int references products(id),
+create table stock
+(
+    id  int primary key,
     stock_count int
 );
 
-CREATE TYPE delivery_status AS ENUM ('DELIVERED', 'CANCELED', 'IN_PROCESS', 'STARTING');
-create table delivery(
-    delivery_status_id serial primary key,
-    status delivery_status,
-    delivered_at timestamp default current_timestamp
+create table stock_products(
+    product_id int,
+    stock_id int,
+    primary key (product_id, stock_id),
+    foreign key (product_id) references products(id),
+    foreign key (stock_id) references stock(id)
 );
 
-create table delivery_orders(
-    order_id integer references orders(id),
-    delivery_status integer references delivery(delivery_status_id),
+CREATE TYPE delivery_status AS ENUM ('DELIVERED', 'CANCELED', 'IN_PROCESS', 'STARTING');
+create table delivery
+(
+    delivery_status_id serial primary key,
+    status             delivery_status
+);
+
+create table delivery_orders
+(
+    order_id        integer references orders (id),
+    delivery_status integer references delivery (delivery_status_id),
     primary key (order_id, delivery_status),
     foreign key (order_id) references orders (id),
     foreign key (delivery_status) references delivery (delivery_status_id)
 );
 
 CREATE TYPE payment_status AS ENUM ('SUCCESS', 'ERROR');
-create table payment(
+create table payment
+(
     payment_status_id serial primary key,
-    status payment_status,
-    payed_at timestamp default current_timestamp
+    status            payment_status
 );
 
-CREATE table payment_orders(
-    order_id int,
+CREATE table payment_orders
+(
+    order_id       int,
     payment_status int,
     primary key (order_id, payment_status),
     foreign key (order_id) references orders (id),
     foreign key (payment_status) references payment (payment_status_id)
 );
-
-create table users_orders(
-    order_id integer,
-    user_id integer,
-    primary key (user_id, order_id),
-    foreign key (user_id) references users (id),
-    foreign key (order_id) references orders (id)
-);
-
-
 
 
 
@@ -143,3 +152,15 @@ VALUES ('user', '$2a$04$Fx/SX9.BAvtPlMyIIqqFx.hLY2Xp8nnhpzvEEVINvVpwIPbA3v/.i', 
 insert into users_roles (user_id, role_id)
 VALUES (1, 1),
        (2, 2);
+
+insert into stock(id, stock_count)
+values (1, 100),
+       (2, 200),
+       (3, 500),
+       (4, 5151);
+
+insert into stock_products(product_id, stock_id)
+values (1,1),
+       (2,2),
+       (3,3),
+       (4,4);

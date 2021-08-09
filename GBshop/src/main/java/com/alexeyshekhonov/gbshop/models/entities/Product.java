@@ -32,4 +32,10 @@ public class Product {
     @Column(name = "updated_at")
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    @OneToOne
+    @JoinTable(name = "stock_products",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "stock_id"))
+    private Stock stock;
 }
