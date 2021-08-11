@@ -1,7 +1,6 @@
 package com.alexeyshekhonov.gbshop.controllers;
 
 import com.alexeyshekhonov.gbshop.models.dtos.CartDto;
-import com.alexeyshekhonov.gbshop.models.dtos.ProductIdDto;
 import com.alexeyshekhonov.gbshop.services.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +22,10 @@ public class CartController {
     }
 
 
-    @PostMapping
+    @PostMapping({"/{id}"})
     @ResponseStatus(HttpStatus.CREATED)
-    public void addToCart(@RequestBody ProductIdDto productIdDto) {
-        cartService.addToCartById(productIdDto);
+    public void addToCart(@PathVariable Long id) {
+        cartService.addToCartById(id);
     }
 
     @DeleteMapping

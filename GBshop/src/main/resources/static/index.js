@@ -37,7 +37,7 @@ angular.module('app', []).controller('indexController', function ($scope, $http)
     }
 
     $scope.addToCart = function (productId) {
-        $http.post(contextPath + '/cart', {'id': productId})
+        $http.post(contextPath + '/cart/' + productId)
             .then(function (response) {
                 $scope.fillCart();
             });

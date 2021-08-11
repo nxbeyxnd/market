@@ -13,7 +13,7 @@ public class OrderDto {
     private int cost;
 
     public OrderDto(Order o) {
-        this.productTitle = o.getProduct().getTitle();
+        this.productTitle = o.getTitle();
         this.count = o.getCount();
         this.costPerProduct = o.getCostPerItem();
         this.cost = o.getCost();

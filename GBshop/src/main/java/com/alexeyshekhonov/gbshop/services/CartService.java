@@ -3,7 +3,6 @@ package com.alexeyshekhonov.gbshop.services;
 import com.alexeyshekhonov.gbshop.exceptions.ResourceNotFoundException;
 import com.alexeyshekhonov.gbshop.models.dtos.CartDto;
 import com.alexeyshekhonov.gbshop.models.dtos.OrderDto;
-import com.alexeyshekhonov.gbshop.models.dtos.ProductIdDto;
 import com.alexeyshekhonov.gbshop.models.entities.Order;
 import com.alexeyshekhonov.gbshop.models.entities.Product;
 import com.alexeyshekhonov.gbshop.repositories.OrderRepository;
@@ -29,16 +28,16 @@ public class CartService {
         return new CartDto(o, calculateCost(o), calculateCount(o));
     }
 
-    public void addToCartById(ProductIdDto productIdDto) {
+    public void addToCartById(Long id) {
         for (Order o : orderRepository.findAll()) {
-            if (o.getProduct().getId().equals(productIdDto.getId())) {
+            if (o.getProduct().getId().equals(id)) {
                 o.setCost(calculateCost(o));
                 o.setCount(calculateCount(o));
                 orderRepository.save(o);
                 return;
             }
         }
-        Product p = productsRepository.findById(productIdDto.getId()).orElseThrow(() -> new ResourceNotFoundException("Product with id: " + productIdDto.getId() + " not found"));
+        Product p = productsRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Product with id: " + id + " not found"));
         Order order = new Order(p);
         order.setTitle(p.getTitle());
         orderRepository.save(order);

@@ -1,5 +1,6 @@
 package com.alexeyshekhonov.gbshop.models.dtos;
 
+import com.alexeyshekhonov.gbshop.models.entities.User;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
