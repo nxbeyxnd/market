@@ -1,5 +1,6 @@
 package com.alexeysherkhonov.msorders.controllers;
 
+import com.alexeysherkhonov.msorders.entities.CartDto;
 import com.alexeysherkhonov.msorders.services.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

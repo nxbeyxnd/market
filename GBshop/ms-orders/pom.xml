@@ -23,6 +23,11 @@
             <artifactId>routing-lib</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.alexeysherkhonov</groupId>
+            <artifactId>ms-products</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>
