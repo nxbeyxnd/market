@@ -1,4 +1,4 @@
-package com.alexeysherkhonov.msauth.entities;
+package com.alexeysherkhonov.msauth.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

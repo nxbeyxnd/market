@@ -15,7 +15,7 @@
 
     <properties>
         <io-jwt.version>0.9.1</io-jwt.version>
-        <swagger.version>1.5.9</swagger.version>
+        <swagger.version>1.5.10</swagger.version>
     </properties>
 
     <dependencies>
@@ -73,6 +73,12 @@
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
             <version>${io-jwt.version}</version>
+        </dependency>
+
+        <!-- AOP -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
         </dependency>
     </dependencies>
 

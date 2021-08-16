@@ -3,7 +3,7 @@ package com.alexeysherkhonov.msauth;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.alexeysherkhonov")
 public class MsAuthApplication {
 
     public static void main(String[] args) {
